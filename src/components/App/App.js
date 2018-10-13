@@ -64,20 +64,23 @@ class App extends Component {
             <h1>Feedback!</h1>
             <h4><i>Don't forget it!</i></h4>
           </header>
-          {/* <ul>
-            <li>
-              <Link to="/">Feedback Form</Link>
-            </li>
-            <li>
-              <Link to="/">Admin</Link>
-            </li>
-          </ul> */}
-
-
+          <ul>
+            <li><Link to="/"></Link></li>
+            <li><Link to="/content">Content</Link></li>
+            <li><Link to="/support">Admin</Link></li>
+            <li><Link to="/comments">Admin</Link></li>
+            <li><Link to="/success">Admin</Link></li>
+            <li><Link to="/admin">Admin</Link></li>
+          </ul>
+          <Route exact path='/' component={Feeling}/>
+          <Route exact path='/support' component={Support}/>
+          <Route exact path='/comments' component={Comment}/>
+          <Route exact path='/success' component={Success}/>
+          <Route exact path='/admin' component={Admin}/>
 
           <form onSubmit={this.handleClick}>
 
-            <input type="text" placeholder="How are you feeling today?" onChange={this.handleChangeFor('feeling')} value={this.state.feedback.feeling} />
+            
             <input type="text" placeholder="How well are you understanding the content?" onChange={this.handleChangeFor('understanding')} value={this.state.feedback.understanding} />
             <input type="text" placeholder="How well are you being supported?" onChange={this.handleChangeFor('support')} value={this.state.feedback.support} />
             <input type="text" placeholder="Any comments you want to leave?" onChange={this.handleChangeFor('comments')} value={this.state.feedback.comments} />

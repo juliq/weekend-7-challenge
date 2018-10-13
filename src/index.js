@@ -9,8 +9,11 @@ import logger from 'redux-logger';
 
 const answer = (state = [], action) => {
     switch (action.type) {
-        case "ADD_COMMENT":
-            return action.payload;
+        case "ADD_FEELING":
+            return {...state, feeling: action.payload};
+        case "ADD UNDERSTANDING":
+            return {...state, understanding: action.payload};
+            
         default: 
            return state;
     }
