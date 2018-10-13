@@ -10,22 +10,26 @@ import logger from 'redux-logger';
 const answer = (state = [], action) => {
     switch (action.type) {
         case "ADD_FEELING":
-            return {...state, feeling: action.payload};
-        case "ADD UNDERSTANDING":
-            return {...state, understanding: action.payload};
-            
-        default: 
-           return state;
+            return { ...state, feeling: action.payload };
+        case "ADD_UNDERSTANDING":
+            return { ...state, understanding: action.payload };
+        case "ADD_SUPPORT":
+            return { ...state, support: action.payload };
+        case "ADD_COMMENT":
+            return { ...state, comment: action.payload };
+
+        default:
+            return state;
     }
 }
 
 const allReducers = combineReducers({
     answer,
-}),
+})
 
 const storeInstance = createStore(
     allReducers,
-    applyMiddleware(logger)
+    applyMiddleware(logger),
 )
 
 

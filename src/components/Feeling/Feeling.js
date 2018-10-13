@@ -5,17 +5,17 @@ import { connect } from 'react-redux';
 class Feeling extends Component {
 
     state = {
-        feeling: '',
+        feeling: 0,
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: 'ADD_COMMENT', payload: this.state.feedback })
+        this.props.dispatch({ type: 'ADD_FEELING', payload: this.state.feedback })
     }
 
     handleFeeling = (event) => {
         this.setState({
-            feedback: event.target.value
+            feeling: event.target.value
         }
         );
     }
@@ -24,9 +24,9 @@ class Feeling extends Component {
         return (
             <div className="Feeling">
                 <form onSubmit={this.handleSubmit}></form>
-                <input type="text"
+                <input type="number"
                     placeholder="How are you feeling today?"
-                    onChange={this.handleChangeFor('feeling')}
+                    onChange={this.handleFeeling('feeling')}
                     value={this.state.feedback.feeling}
                 />
                 <input type="submit" value="Next" />

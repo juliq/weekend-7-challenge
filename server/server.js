@@ -15,18 +15,6 @@ const feedbackRouter = require('./routes/feedback.router');  ////// or?
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {
     console.log('Listening on port: ', port);
-
-
-
-let http = require('http');
-
-   let server = http.createServer(function (req, res) {
-        res.end('test');
-    });
-
-    server.on('listening', function () {
-        console.log('ok, server is running');
-    });
-
-    server.listen(5000);
 });
+
+
