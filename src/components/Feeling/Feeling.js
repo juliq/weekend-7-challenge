@@ -13,20 +13,20 @@ class Feeling extends Component {
         this.props.dispatch({ type: 'ADD_FEELING', payload: this.state.feedback })
     }
 
-    handleFeeling = (event) => {
+    handleChange = (event) => {
         this.setState({
             feeling: event.target.value
-        }
-        );
+        });
+        this.props.history.push('/understanding')
     }
 
     render() {
         return (
             <div className="Feeling">
                 <form onSubmit={this.handleSubmit}></form>
-                <input type="number"
+                <input autoFocus type="number"
                     placeholder="How are you feeling today?"
-                    onChange={this.handleFeeling('feeling')}
+                    onChange={this.handleChange('feeling')}
                     value={this.state.feedback.feeling}
                 />
                 <input type="submit" value="Next" />
@@ -36,9 +36,8 @@ class Feeling extends Component {
 }
 
 
-const mapStateToProps = state => ({
-    feeling: state.feeling
+// const mapStateToProps = state => ({
+//     feeling: state.feeling
+// })
 
-})
-
-export default Feeling;
+export default connect()(Feeling);

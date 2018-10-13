@@ -13,20 +13,20 @@ class Understanding extends Component {
         this.props.dispatch({ type: 'ADD_UNDERSTANDING', payload: this.state.feedback })
     }
 
-    handleContent = (event) => {
+    handleChange = (event) => {
         this.setState({
-            content: event.target.value
-        }
-        );
+            understanding: event.target.value
+        });
+        this.props.history.push('/support')
     }
 
     render() {
         return (
             <div className="Understanding">
                 <form onSubmit={this.handleSubmit}></form>
-                <input type="number"
+                <input autoFocus type="number"
                     placeholder="How well are you understanding the content?"
-                    onChange={this.handleContent('understanding')}
+                    onChange={this.handleChange('understanding')}
                     value={this.state.feedback.content}
                 />
                 <input type="submit" value="Next" />
@@ -36,9 +36,8 @@ class Understanding extends Component {
 }
 
 
-const mapStateToProps = state => ({
-    understanding: state.understanding
+// const mapStateToProps = state => ({
+//     understanding: state.understanding
+// })
 
-})
-
-export default Understanding;
+export default connect()(Understanding);
