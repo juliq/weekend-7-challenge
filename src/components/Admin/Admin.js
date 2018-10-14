@@ -36,6 +36,6 @@ class Admin extends Component {
     }
 }
 
-const mapStateToProps = state => ({ state });
+const mapStateToProps = state => ({ feedback: state.feedback });
 
 export default connect(mapStateToProps)(Admin);

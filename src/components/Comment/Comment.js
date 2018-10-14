@@ -10,26 +10,27 @@ class Comment extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: 'ADD_COMMENT', payload: this.state.feedback })
+        this.props.dispatch({ type: 'ADD_COMMENT', payload: this.state.feedback });
+        this.props.history.push('/success')
     }
 
     handleChange = (event) => {
         this.setState({
             comment: event.target.value
         });
-        this.props.history.push('/success')
     }
 
     render() {
         return (
             <div className="Comment">
-                <form onSubmit={this.handleSubmit}></form>
+                <form onSubmit={this.handleSubmit}>
                 <input autoFocus type="text"
                     placeholder="Any comments you would like to leave?"
-                    onChange={this.handleChange('support')}
-                    value={this.state.feedback.support}
+                    onChange={this.handleChange}
+                    value={this.state.comment}
                 />
                 <input type="submit" value="Submit" />
+                </form>
             </div>
         );
     }

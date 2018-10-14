@@ -10,26 +10,27 @@ class Feeling extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: 'ADD_FEELING', payload: this.state.feedback })
+        this.props.dispatch({ type: 'ADD_FEELING', payload: this.state.feedback });
+        this.props.history.push('/understanding');
     }
 
     handleChange = (event) => {
         this.setState({
             feeling: event.target.value
         });
-        this.props.history.push('/understanding')
     }
 
     render() {
         return (
             <div className="Feeling">
-                <form onSubmit={this.handleSubmit}></form>
+                <form onSubmit={this.handleSubmit}>
                 <input autoFocus type="number"
                     placeholder="How are you feeling today?"
-                    onChange={this.handleChange('feeling')}
-                    value={this.state.feedback.feeling}
+                    onChange={this.handleChange}
+                    value={this.state.feeling}
                 />
                 <input type="submit" value="Next" />
+                </form>
             </div>
         );
     }

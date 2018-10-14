@@ -10,26 +10,27 @@ class Understanding extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: 'ADD_UNDERSTANDING', payload: this.state.feedback })
+        this.props.dispatch({ type: 'ADD_UNDERSTANDING', payload: this.state.feedback });
+        this.props.history.push('/support')
     }
 
     handleChange = (event) => {
         this.setState({
             understanding: event.target.value
         });
-        this.props.history.push('/support')
     }
 
     render() {
         return (
             <div className="Understanding">
-                <form onSubmit={this.handleSubmit}></form>
+                <form onSubmit={this.handleSubmit}>
                 <input autoFocus type="number"
                     placeholder="How well are you understanding the content?"
-                    onChange={this.handleChange('understanding')}
-                    value={this.state.feedback.content}
+                    onChange={this.handleChange}
+                    value={this.state.understanding}
                 />
                 <input type="submit" value="Next" />
+                </form>
             </div>
         );
     }
