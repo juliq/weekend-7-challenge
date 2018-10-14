@@ -16,7 +16,7 @@ class App extends Component {
 
   handleClick = (event) => {
     event.preventDefault();
-    this.props.dispatch({ type: 'ADD_COMMENTS', payload: this.state.feedback })
+    this.props.dispatch({ type: 'ADD_FEEDBACK', payload: this.state.feedback })
   }
 
   render() {

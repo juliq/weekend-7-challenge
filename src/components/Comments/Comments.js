@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 // This page displays question 3
 class Comments extends Component {
@@ -8,10 +9,14 @@ class Comments extends Component {
         comments: '',
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async event => {  // after clicking  submit feedback,  anything after await wil wait until the thing before it runs
         event.preventDefault();
-        this.props.dispatch({ type: 'ADD_COMMENTS', payload: this.state.feedback });
-        this.props.history.push('/success')
+        await this.props.dispatch({ // dispatch is the action to the redux store
+            type: 'ADD_COMMENTS', 
+            payload: this.state.comments 
+        });
+        await this.sendFeedback();
+        await this.props.history.push('/success')
     }
 
     handleChange = (event) => {
@@ -20,14 +25,27 @@ class Comments extends Component {
         });
     }
 
+    // sendFeedback sends all feedback to server/router at one time
+    sendFeedback = () => {
+        axios({
+            method: 'POST',
+            url: '/feedback',
+            data: this.props.answers
+        }).then(response => {
+            console.log(response);
+        }).catch(error => {
+            alert('Error making POST: ', error);
+        });
+    }
+
     render() {
         return (
             <div className="Comments">
                 <form onSubmit={this.handleSubmit}>
-                <input autoFocus type="text"    // autoFocus . . .
+                <input autoFocus type="text"    // autoFocus is . . .
                     placeholder="Any comments you would like to leave?"
                     onChange={this.handleChange}
-                    value={this.state.comment}
+                    value={this.state.comments}
                 />
                 <input type="submit" value="Submit" />
                 </form>
@@ -37,8 +55,8 @@ class Comments extends Component {
 }
 
 
-// const mapStateToProps = state => ({
-//     support: state.support
-// })
+const mapStateToProps = state => ({
+    answers: state.answers
+})
 
-export default connect()(Comments);
+export default connect(mapStateToProps)(Comments);

@@ -10,8 +10,8 @@ class Support extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: 'ADD_SUPPORT', payload: this.state.feedback });
-        this.props.history.push('/comment')
+        this.props.dispatch({ type: 'ADD_SUPPORT', payload: this.state.support});
+        this.props.history.push('/comments')
     }
 
     handleChange = (event) => {

@@ -17,6 +17,9 @@ class Admin extends Component {
         });
     }
 
+    // DELETE -- request to delete a feedback entry
+
+
     // enables function to run on page load
     componentDidMount() {
         this.getFeedback();
@@ -31,7 +34,7 @@ class Admin extends Component {
                     <thead>
                         <tr>
                             <th>Feeling</th>
-                            <th>Comprehension</th>
+                            <th>Understanding</th>
                             <th>Support</th>
                             <th>Comments</th>
                             <th>Delete</th>
@@ -42,10 +45,10 @@ class Admin extends Component {
                             return (
                                 <tr>
                                     <td>{feedback.feeling}</td>
-                                    <td>{feedback.comprehension}</td>
+                                    <td>{feedback.understanding}</td>
                                     <td>{feedback.support}</td>
                                     <td>{feedback.comments}</td>
-                                    <td><button type="delete" value="" onClick={this.handleSubmit}>{feedback.delete}</button></td>
+                                    <td><button type="delete" value="" onClick={this.handleSubmit}>Delete</button></td>
                                 </tr>
                             );
                         })}

@@ -10,7 +10,7 @@ class Feeling extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: 'ADD_FEELING', payload: this.state.feedback });
+        this.props.dispatch({ type: 'ADD_FEELING', payload: this.state.feeling });
         this.props.history.push('/understanding');
     }
 

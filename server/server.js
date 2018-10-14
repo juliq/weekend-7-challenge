@@ -9,7 +9,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
-const feedbackRouter = require('./routes/feedback.router');  ////// or?
+const feedbackRouter = require('./routes/feedback.router');  // tells the server which path name to use to make gets and posts
+app.use('/feedback', feedbackRouter);
 
 
 /** ---------- START SERVER ---------- **/
