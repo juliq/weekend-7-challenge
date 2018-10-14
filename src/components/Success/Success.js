@@ -13,8 +13,7 @@ class Success extends Component {
     render() {
         return (
             <div className="Success">
-                
-                <button type="submit" value="" onClick={this.handleSubmit}>Leave New Feedback</button>
+                <button type="submit" value="" onClick={this.handleSubmit}><h1>Leave New Feedback</h1></button>
             </div>
         );
     }

@@ -2,29 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // This page displays question 3
-class Comment extends Component {
+class Comments extends Component {
 
     state = {
-        comment: '',
+        comments: '',
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: 'ADD_COMMENT', payload: this.state.feedback });
+        this.props.dispatch({ type: 'ADD_COMMENTS', payload: this.state.feedback });
         this.props.history.push('/success')
     }
 
     handleChange = (event) => {
         this.setState({
-            comment: event.target.value
+            comments: event.target.value
         });
     }
 
     render() {
         return (
-            <div className="Comment">
+            <div className="Comments">
                 <form onSubmit={this.handleSubmit}>
-                <input autoFocus type="text"
+                <input autoFocus type="text"    // autoFocus . . .
                     placeholder="Any comments you would like to leave?"
                     onChange={this.handleChange}
                     value={this.state.comment}
@@ -41,4 +41,4 @@ class Comment extends Component {
 //     support: state.support
 // })
 
-export default connect()(Comment);
+export default connect()(Comments);

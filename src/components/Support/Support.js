@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class Support extends Component {
 
     state = {
-        support: 0,
+        support: '',
     }
 
     handleSubmit = (event) => {

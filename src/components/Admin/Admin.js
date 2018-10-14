@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 
 class Admin extends Component {
+
+    // GET Request for responses from the database
+    getFeedback = () => {
+        axios.get('/feedback').then((response) => {
+            this.props.dispatch({
+                type: 'GET_FEEDBACK',
+                payload: response.data
+            })
+        }).catch((error) => {
+            console.log('error making get', error);
+        });
+    }
+
+    // enables function to run on page load
+    componentDidMount() {
+        this.getFeedback();
+    }
+
+
     render() {
         return (
             <React.Fragment>
@@ -25,7 +45,7 @@ class Admin extends Component {
                                     <td>{feedback.comprehension}</td>
                                     <td>{feedback.support}</td>
                                     <td>{feedback.comments}</td>
-                                    <td>{feedback.delete}</td>
+                                    <td><button type="delete" value="" onClick={this.handleSubmit}>{feedback.delete}</button></td>
                                 </tr>
                             );
                         })}

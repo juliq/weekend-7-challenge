@@ -15,7 +15,7 @@ const answer = (state = {}, action) => {
             return { ...state, understanding: action.payload };
         case "ADD_SUPPORT":
             return { ...state, support: action.payload };
-        case "ADD_COMMENT":
+        case "ADD_COMMENTS":
             return { ...state, comment: action.payload };
         default:
             return state;

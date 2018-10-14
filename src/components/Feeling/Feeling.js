@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class Feeling extends Component {
 
     state = {
-        feeling: 0,
+        feeling:'',
     }
 
     handleSubmit = (event) => {

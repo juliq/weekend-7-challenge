@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import './App.css';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
-import Comment from '../Comment/Comment';
+import Comments from '../Comments/Comments';
 import Success from '../Success/Success';
 import Admin from '../Admin/Admin';
 
@@ -16,34 +16,7 @@ class App extends Component {
 
   handleClick = (event) => {
     event.preventDefault();
-    this.props.dispatch({ type: 'ADD_COMMENT', payload: this.state.feedback })
-  }
-
-  // currying -- to handle putting events for different properties on the DOM
-  // handleChangeFor = (property) => (event) => {
-  //   this.setState({
-  //     feedback: {
-  //       ...this.state.feedback,
-  //       [property]: event.target.value
-  //     }
-  //   });
-  // }
-
-  // GET Request for responses from the database
-  getFeedback = () => {
-    axios.get('/feedback').then((response) => {
-      this.props.dispatch({
-        type: 'GET_FEEDBACK',
-        payload: response.data
-      })
-    }).catch((error) => {
-      console.log('error making get', error);
-    });
-  }
-
-  // enables function to run on page load
-  componentDidMount() {
-    this.getFeedback();
+    this.props.dispatch({ type: 'ADD_COMMENTS', payload: this.state.feedback })
   }
 
   render() {
@@ -58,14 +31,14 @@ class App extends Component {
             <li><Link to="/"></Link></li>
             <li><Link to="/understanding">Understanding</Link></li>
             <li><Link to="/support">Support</Link></li>
-            <li><Link to="/comment">Comments</Link></li>
+            <li><Link to="/comments">Comments</Link></li>
             <li><Link to="/success">Success</Link></li>
             <li><Link to="/admin">Admin</Link></li>
           </ul>
           <Route exact path='/' component={Feeling} />
           <Route exact path='/understanding' component={Understanding} />
           <Route exact path='/support' component={Support} />
-          <Route exact path='/comment' component={Comment} />
+          <Route exact path='/comments' component={Comments} />
           <Route exact path='/success' component={Success} />
           <Route exact path='/admin' component={Admin} />
 
