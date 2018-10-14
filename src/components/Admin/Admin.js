@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 
 class Admin extends Component {
@@ -19,14 +20,26 @@ class Admin extends Component {
 
     // DELETE -- request to delete a feedback entry
     handleDelete = (data) => {
-        axios({
-            method: 'DELETE',
-            url: `/feedback/${data.id}`,
-            params: data
-        }).then(() => {
-            this.getFeedback(); // getFeedback updates the page
-        }).catch((error) => {
-            console.log('error deleting info', error);
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this feedback file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then(willDelete => {
+            if (willDelete) {
+                axios({
+                    method: 'DELETE',
+                    url: `/feedback/${data.id}`,
+                    params: data
+                }).then(() => {
+                    this.getFeedback(); // getFeedback updates the page
+                }).catch((error) => {
+                    console.log('error deleting info', error);
+                });
+            } else {
+                swal("Your feedback file is safe!");
+            }
         });
     }
 
@@ -59,7 +72,9 @@ class Admin extends Component {
                                     <td>{feedback.understanding}</td>
                                     <td>{feedback.support}</td>
                                     <td>{feedback.comments}</td>
-                                    <td><button type="delete" value="" onClick={this.handleDelete}>Delete</button></td>
+                                    <td><button type="delete" value="" onClick={() => this.handleDelete(feedback)}>Delete</button></td>
+                                    {/* Be sure to curry the onClick event by adding an anonymous function before the handleDelete to prevent 
+                                    the handleDelete running page load which would delete the entire database. */}
                                 </tr>
                             );
                         })}

@@ -34,7 +34,9 @@ router.post('/', (req, res) => {
 // Delete a feedback entry
 router.delete('/:id', (req, res) => {
     console.log('DELETE /feedback (by id)', req.params.id);
-    feedback.findByIdAndRemove({ _id: req.params.id }).then((result) => {
+    pool.query(`DELETE FROM "feedback"
+    WHERE "id"=$1;`, [req.params.id])
+        .then((result) => {
         res.sendStatus(200);
     }).catch((error) => {
         console.log('Error DELETE /feedback', error);
