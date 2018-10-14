@@ -7,6 +7,7 @@ import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
+// the reducers set redux state for specific actions
 const answers = (state = {}, action) => {
     switch (action.type) {
         case "ADD_FEELING":
@@ -25,13 +26,13 @@ const answers = (state = {}, action) => {
 const feedback = (state = [], action) => {
     switch (action.type) {
         case "GET_FEEDBACK":
-            return [ ...state, ...action.payload ];
-        default:
+            return [ ...action.payload ]; // returns the action.payload
+        default:                                // both are arrays and the spread operator removes the brackets
             return state;
     }
 }
 
-const allReducers = combineReducers({
+const allReducers = combineReducers({   
     answers,
     feedback,
 })

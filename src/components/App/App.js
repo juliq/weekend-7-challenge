@@ -41,16 +41,6 @@ class App extends Component {
           <Route exact path='/comments' component={Comments} />
           <Route exact path='/success' component={Success} />
           <Route exact path='/admin' component={Admin} />
-
-          <form onSubmit={this.handleClick}>
-
-
-            {/* <input type="text" placeholder="How well are you understanding the content?" onChange={this.handleChangeFor('understanding')} value={this.state.feedback.understanding} /> */}
-            {/* <input type="text" placeholder="How well are you being supported?" onChange={this.handleChange('support')} value={this.state.feedback.support} /> */}
-            {/* <input type="text" placeholder="Any comments you want to leave?" onChange={this.handleChange('comments')} value={this.state.feedback.comments} /> */}
-            <input type="submit" value="Next" />
-            {/* if the type of input is "submit" it will show up on the dom as a button */}
-          </form>
           
         </div>
       </Router>
@@ -58,8 +48,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  app: state.app
-})
-
-export default connect(mapStateToProps)(App);
+export default connect()(App);

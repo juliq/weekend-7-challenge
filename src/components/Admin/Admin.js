@@ -18,6 +18,17 @@ class Admin extends Component {
     }
 
     // DELETE -- request to delete a feedback entry
+    handleDelete = (data) => {
+        axios({
+            method: 'DELETE',
+            url: `/feedback/${data.id}`,
+            params: data
+        }).then(() => {
+            this.getFeedback(); // getFeedback updates the page
+        }).catch((error) => {
+            console.log('error deleting info', error);
+        });
+    }
 
 
     // enables function to run on page load
@@ -29,7 +40,7 @@ class Admin extends Component {
     render() {
         return (
             <React.Fragment>
-                {JSON.stringify(this.props.state)}
+                {/* {JSON.stringify(this.props.state)} */}
                 <table>
                     <thead>
                         <tr>
@@ -43,12 +54,12 @@ class Admin extends Component {
                     <tbody>
                         {this.props.feedback.map(feedback => {
                             return (
-                                <tr>
+                                <tr key={feedback.id}>
                                     <td>{feedback.feeling}</td>
                                     <td>{feedback.understanding}</td>
                                     <td>{feedback.support}</td>
                                     <td>{feedback.comments}</td>
-                                    <td><button type="delete" value="" onClick={this.handleSubmit}>Delete</button></td>
+                                    <td><button type="delete" value="" onClick={this.handleDelete}>Delete</button></td>
                                 </tr>
                             );
                         })}
