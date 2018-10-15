@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class Feeling extends Component {
 
     state = {
-        feeling:'',
+        feeling: '',
     }
 
     handleSubmit = (event) => {
@@ -23,13 +23,14 @@ class Feeling extends Component {
     render() {
         return (
             <div className="Feeling">
+                <h3>How are you feeling today? Please rate on a scale of 1-5.</h3>
                 <form onSubmit={this.handleSubmit}>
-                <input autoFocus type="number"
-                    placeholder="How are you feeling today?"
-                    onChange={this.handleChange}
-                    value={this.state.feeling}
-                />
-                <input type="submit" value="Next" />
+                    <input autoFocus type="number"
+                        placeholder="How are you feeling today?"
+                        onChange={this.handleChange}
+                        value={this.state.feeling}
+                    />
+                    <input type="submit" value="Next" />
                 </form>
             </div>
         );

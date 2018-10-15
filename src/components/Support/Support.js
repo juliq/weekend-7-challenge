@@ -10,7 +10,7 @@ class Support extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: 'ADD_SUPPORT', payload: this.state.support});
+        this.props.dispatch({ type: 'ADD_SUPPORT', payload: this.state.support });
         this.props.history.push('/comments')
     }
 
@@ -23,13 +23,14 @@ class Support extends Component {
     render() {
         return (
             <div className="Support">
+                <h3>How well are you being supported? Please rate on a scale of 1-5.</h3>
                 <form onSubmit={this.handleSubmit}>
-                <input autoFocus type="number"
-                    placeholder="How well are you being supported?"
-                    onChange={this.handleChange}
-                    value={this.state.support}
-                />
-                <input type="submit" value="Next" />
+                    <input autoFocus type="number"
+                        placeholder="How well are you being supported?"
+                        onChange={this.handleChange}
+                        value={this.state.support}
+                    />
+                    <input type="submit" value="Next" />
                 </form>
             </div>
         );

@@ -8,7 +8,7 @@ class Home extends Component {
       return (
         <Router>
           <div>
-            <h1>Leave Feedback Here!</h1>
+            <h1>"And my last reminder of the day, which is my last reminder of every day, is...?" - Luke</h1>
             
               <Link to="/feeling">Click here to begin leaving feedback</Link>
             

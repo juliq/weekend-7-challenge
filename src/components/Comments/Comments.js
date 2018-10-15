@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-// This page displays question 3
+// This page displays question 4
 class Comments extends Component {
 
     state = {
         comments: '',
     }
 
-    handleSubmit = async event => {  // after clicking  submit feedback,  anything after await wil wait until the thing before it runs
+    handleSubmit = async event => {  // after clicking submit feedback, anything after await will wait until the thing before it runs
         event.preventDefault();
         await this.props.dispatch({ // dispatch is the action to the redux store
-            type: 'ADD_COMMENTS', 
-            payload: this.state.comments 
+            type: 'ADD_COMMENTS',
+            payload: this.state.comments
         });
         await this.sendFeedback();
         await this.props.history.push('/success')
@@ -41,13 +41,14 @@ class Comments extends Component {
     render() {
         return (
             <div className="Comments">
+                <h3>Any comments you would like to leave?</h3>
                 <form onSubmit={this.handleSubmit}>
-                <input autoFocus type="text"    // autoFocus is . . .
-                    placeholder="Any comments you would like to leave?"
-                    onChange={this.handleChange}
-                    value={this.state.comments}
-                />
-                <input type="submit" value="Submit" />
+                    <input autoFocus type="text"    // autoFocus is . . .
+                        placeholder="Any comments you would like to leave?"
+                        onChange={this.handleChange}
+                        value={this.state.comments}
+                    />
+                    <input type="submit" value="Submit" />
                 </form>
             </div>
         );

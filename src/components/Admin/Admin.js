@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import swal from 'sweetalert';
+import './Admin.css';
 
 
 class Admin extends Component {
@@ -52,35 +53,35 @@ class Admin extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                {/* {JSON.stringify(this.props.state)} */}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feeling</th>
-                            <th>Understanding</th>
-                            <th>Support</th>
-                            <th>Comments</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.feedback.map(feedback => {
-                            return (
-                                <tr key={feedback.id}>
-                                    <td>{feedback.feeling}</td>
-                                    <td>{feedback.understanding}</td>
-                                    <td>{feedback.support}</td>
-                                    <td>{feedback.comments}</td>
-                                    <td><button type="delete" value="" onClick={() => this.handleDelete(feedback)}>Delete</button></td>
-                                    {/* Be sure to curry the onClick event by adding an anonymous function before the handleDelete to prevent 
+                <React.Fragment>
+                    {/* {JSON.stringify(this.props.state)} */}
+                    <table className="Feedback">
+                        <thead>
+                            <tr>
+                                <th>Feeling</th>
+                                <th>Understanding</th>
+                                <th>Support</th>
+                                <th>Comments</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.props.feedback.map(feedback => {
+                                return (
+                                    <tr key={feedback.id}>
+                                        <td>{feedback.feeling}</td>
+                                        <td>{feedback.understanding}</td>
+                                        <td>{feedback.support}</td>
+                                        <td>{feedback.comments}</td>
+                                        <td><button type="delete" value="" onClick={() => this.handleDelete(feedback)}>Delete</button></td>
+                                        {/* Be sure to curry the onClick event by adding an anonymous function before the handleDelete to prevent 
                                     the handleDelete running page load which would delete the entire database. */}
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
-            </React.Fragment>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </React.Fragment>
         )
     }
 }

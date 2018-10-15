@@ -1,60 +1,42 @@
 # Redux Feedback Loop
 
-> **PLEASE COMMENT YOUR CODE.** Do not clone this repository. Instead, download the zip, extract the contents, `git init`, `git add .`, `git commit -m "initial commit - base project"` and add your remote. Please do this before you leave for the day.
-
-"And my last reminder of the day, which is my last reminder of every day, is...?" - Luke
-
-
- For this assignment, you will be creating a feedback form modeled after Prime's system. Feedback will be collected over 4 views, and when all steps are complete, your app will save the feedback in the database. In a separate view, a user will be able to see all the collected feedback. 
+ For this assignment, I created a feedback form modeled after Prime's system. Feedback is collected over 4 views, and when all steps are complete, the app saves the feedback in the database. In the Admin view, an administrator is able to see all the collected feedback. 
 
 ### SETUP
 
-Create your database and tables using the provided `data.sql` file. Start the server.
-
-```
-npm install
-npm run server
-```
-
-Now that the server is running, open a new terminal tab with `cmd + t` and start the react client app.
-
-```
-npm run client
-```
+First, I created my database and tables using the provided `data.sql` file. 
 
 ### ADD NEW FEEDBACK
 
-> NOTE: As a baseline requirement, you must use Redux to store your data across views.
+NOTE: I used Redux to store my data across views.
 
-Create a multi-part form that allows users to leave feedback for today. 
-There will be 4 views for the form parts.
-The parts:
-- How are you feeling today?
-![feeling](wireframes/page-one.png)
-- How well are you understanding the content?
-![understanding](wireframes/page-two.png)
-- How well are you being supported?
-![support](wireframes/page-three.png)
-- Any comments you want to leave?
-![comments](wireframes/page-four.png)
+I created a multi-part form that allows users to leave feedback for today. 
+There are 4 views for the form parts, each view has one question to be answered.
+They include:
+1- How are you feeling today? 
+This question is answered with a number, preferably 1-5.
 
-While there is no nav bar, each part of the form should be at its own route. Clicking next should move the user to the appropriate step in the process.
+2- How well are you understanding the content? 
+This question is also answered with a number, preferably 1-5.
 
- When the form is complete, save the submission in the database. The user should see a submission success page.
- ![understanding](wireframes/page-five.png)
+3- How well are you being supported? 
+This question is also answered with a number, preferably 1-5.
+
+4- Any comments you want to leave? 
+This question is answered by typing text into the box.
+
+Since there is no nav bar, each part of the form is its own route. Clicking "Next" moves the user to the appropriate step in the process.
+
+ When the form is complete, the submission is saved in the database. The user sees a submission success page.
 
 ### DISPLAY FEEDBACK
 
-Display all of the existing feedback at the route `/admin`. The most recently added feedback should appear at the top of the list. Allow the user to delete existing feedback. Prompt the user to confirm prior to deleting the feedback from the database.
+All of the existing feedback is displayed in a table at the route `/admin`. The most recently added feedback should appear at the top of the list -- I am still working on this. 
 
-![display feedback](wireframes/admin.png)
+The administrator may delete existing feedback. The administrator is prompted to confirm prior to deleting the feedback from the database.
 
 ## STRETCH GOALS
 
-- Update this README.md to describe the project in your own words
-- Improve the styling of the app using Material-UI theme, cards, snackbars, buttons, nav bar, and icons, and anything else you'd like.
-- Add the ability to flag an existing feedback entry for further review on the /admin view
-- Deploy your project to Heroku -- you'll need to read the special instructions for building and deploying with these apps! 
+- I have updated the README.md.
+- I would like to improve the styling of the app using Material-UI, etc.
 
-
-> NOTE: These stretch goals are intended to be completed in order.

@@ -23,13 +23,14 @@ class Understanding extends Component {
     render() {
         return (
             <div className="Understanding">
+                <h3>How well are you understanding the content? Please rate on a scale of 1-5.</h3>
                 <form onSubmit={this.handleSubmit}>
-                <input autoFocus type="number"
-                    placeholder="How well are you understanding the content?"
-                    onChange={this.handleChange}
-                    value={this.state.understanding}
-                />
-                <input type="submit" value="Next" />
+                    <input autoFocus type="number"
+                        placeholder="How well are you understanding the content?"
+                        onChange={this.handleChange}
+                        value={this.state.understanding}
+                    />
+                    <input type="submit" value="Next" />
                 </form>
             </div>
         );
