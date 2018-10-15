@@ -13,12 +13,6 @@ import Home from '../Home/Home';
 
 class App extends Component {
 
-
-  handleClick = (event) => {
-    event.preventDefault();
-    this.props.dispatch({ type: 'ADD_FEEDBACK', payload: this.state.feedback })
-  }
-
   render() {
     return (
       <Router>
@@ -28,6 +22,7 @@ class App extends Component {
             <h4><i>Don't forget it!</i></h4>
           </header>
 
+          {/* The links below were moved into their own components */}
           {/* <ul>
             <li><Link to="/feeling">Feeling</Link></li>
             <li><Link to="/understanding">Understanding</Link></li>

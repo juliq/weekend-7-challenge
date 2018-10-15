@@ -7,13 +7,15 @@ class Feeling extends Component {
     state = {
         feeling: '',
     }
-
+// When you hit enter, the form will submit
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.dispatch({ type: 'ADD_FEELING', payload: this.state.feeling });
         this.props.history.push('/understanding');
     }
 
+    // As soon as something changes in the input box, the function will run
+    // This sets the value of state.
     handleChange = (event) => {
         this.setState({
             feeling: event.target.value
